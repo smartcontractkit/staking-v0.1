@@ -1,0 +1,88 @@
+{
+  "name": "@chainlink/staking",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "clean": "hardhat clean",
+    "compile": "hardhat compile",
+    "coverage": "hardhat coverage --solcoverjs tools/.solcover.js --temp artifacts --testfiles \"./test/**/*.ts\"",
+    "deploy:kovan": "hardhat deploy --network kovan --gasprice 1000000000",
+    "docgen": "hardhat docgen && pnpm format",
+    "format": "prettier --write \"**/*.{js,json,md,sol,ts}\"",
+    "format:check": "prettier --list-different \"**/*.{js,json,md,sol,ts}\"",
+    "lint": "pnpm lint:sol && pnpm lint:ts",
+    "lint:sol": "solhint --config tools/.solhint.json --ignore-path .solhintignore --max-warnings 0 \"contracts/**/*.sol\"",
+    "lint:ts": "eslint --config tools/.eslintrc.js --ignore-path .gitignore --ext .js,.ts .",
+    "prepare": "husky install",
+    "slither": "hardhat clean && hardhat compile --config ./hardhat_slither.config.ts && slither --hardhat-ignore-compile --config-file tools/slither.config.json .",
+    "test": "hardhat test --no-compile",
+    "typechain": "hardhat typechain",
+    "typecheck": "tsc"
+  },
+  "lint-staged": {
+    "*.{js,json,md,ts}": "pnpm format"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.4.1",
+    "@nomiclabs/hardhat-etherscan": "^3.1.2",
+    "@openzeppelin/contracts": "^4.6.0",
+    "merkletreejs": "^0.2.31",
+    "solidity-docgen": "0.6.0-beta.29"
+  },
+  "devDependencies": {
+    "@ethersproject/abi": "5.6.4",
+    "@ethersproject/abstract-signer": "^5.0.6",
+    "@ethersproject/bignumber": "^5.0.8",
+    "@ethersproject/bytes": "5.6.1",
+    "@ethersproject/contracts": "5.6.2",
+    "@ethersproject/providers": "5.6.8",
+    "@nomicfoundation/hardhat-chai-matchers": "1.0.3",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
+    "@nomiclabs/hardhat-waffle": "2.0.3",
+    "@typechain/ethers-v5": "10.1.0",
+    "@typechain/hardhat": "6.1.2",
+    "@types/chai": "4.3.1",
+    "@types/fs-extra": "^9.0.1",
+    "@types/mocha": "9.1.1",
+    "@types/node": "18.0.0",
+    "@typescript-eslint/eslint-plugin": "5.30.0",
+    "@typescript-eslint/parser": "5.30.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "8.18.0",
+    "eslint-config-prettier": "8.5.0",
+    "ethereum-waffle": "3.4.4",
+    "ethers": "5.6.9",
+    "fs-extra": "10.1.0",
+    "hardhat": "2.12.1-ir.0",
+    "hardhat-contract-sizer": "2.6.1",
+    "hardhat-deploy": "0.11.10",
+    "hardhat-deploy-ethers": "0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.4",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "mocha": "10.0.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-packagejson": "2.3.0",
+    "prettier-plugin-solidity": "1.0.0-beta.24",
+    "solhint": "^3.2.1",
+    "solhint-plugin-chainlink-solidity": "link:tools/solhint",
+    "solhint-plugin-prettier": "^0.0.5",
+    "solidity-coverage": "0.8.2",
+    "ts-generator": "^0.1.1",
+    "ts-node": "10.8.1",
+    "typechain": "8.1.0",
+    "typescript": "4.7.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@nomiclabs/hardhat-ethers": "0.3.0-beta.13",
+        "ethers": "5.6.9"
+      },
+      "ignoreMissing": [
+        "@ethersproject/hardware-wallets"
+      ]
+    }
+  }
+}

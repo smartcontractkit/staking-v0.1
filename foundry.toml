@@ -1,0 +1,22 @@
+[profile.default]
+src = 'contracts/'
+test = 'test'
+out = 'foundry-artifacts/'
+libs = ["contracts/node_modules", "lib"]
+optimizer_runs = 75000
+via_ir = true
+bytecode_hash = 'none'
+block_timestamp = 1664976590
+fs_permissions = [{ access = "read", path = "./foundry-artifacts"}]
+
+gas_price = 1
+
+[fuzz]
+runs = 256
+max_test_rejects = 120000
+seed = '0x0d9d89437ff2d48ce95779dc9457bc48287b75a573eddbf50954efac5a97c4b9'
+
+[invariant]
+runs = 256
+depth = 256
+fail_on_revert = true

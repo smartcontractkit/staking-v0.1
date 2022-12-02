@@ -1,0 +1,14 @@
+codeSize: 0xF4240
+balanceAddr: 100000000000000000000
+cryticArgs:
+  [
+    '--solc-remaps',
+    '@openzeppelin/contracts/=/src/node_modules/@openzeppelin/contracts/ @chainlink/contracts=/src/node_modules/@chainlink/contracts',
+  ]
+
+# testLimit is the number of test sequences to run; default is 50000
+testLimit: 5000
+# maximum time between generated txs; default is one week
+maxTimeDelay: 0
+# maximum number of blocks elapsed between generated txs; default is expected increment in one week
+maxBlockDelay: 60480

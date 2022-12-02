@@ -1,0 +1,26 @@
+name: 'Set up project'
+description: 'Sets up repository dependencies'
+runs:
+  using: 'composite'
+  steps:
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.15.0
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.0
+    - name: Install PNPM
+      run: npm install -g pnpm@6.32.11
+      shell: bash
+    - name: Use cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.pnpm-store
+          ~/.cache
+        key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile --strict-peer-dependencies && pip3 install -r tools/requirements.txt
+      shell: bash
